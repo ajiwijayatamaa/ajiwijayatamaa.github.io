@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio Aji Wijayatama</title>
+
+    <!-- External CSS Libraries -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* === THEME VARIABLES: NEO BRUTALISM (REFINED) === */
+        :root {
+            --bg: #F4F4F4;
+            --primary: #BEF264;
+            --black: #18181B;
+            --grey: #E4E4E7;
+            --border-width: 2px;
+            --shadow-offset: 4px;
+        }
+
+        /* === GENERAL BODY STYLING === */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--black);
+            overflow-x: hidden;
+        }
+
+        /* === WELCOME SCREEN === */
+        #welcome-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--black); z-index: 9999; display: flex;
+            justify-content: center; align-items: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+            transition-delay: 0.5s;
+        }
+        #welcome-screen.hidden { opacity: 0; visibility: hidden; }
+        .welcome-text {
+            font-family: 'Oxanium', cursive;
+            font-size: clamp(1.8rem, 8vw, 3rem);
+            color: var(--bg); font-weight: 800; overflow: hidden;
+            text-align: center;
+        }
+        .welcome-text span {
+            display: inline-block; opacity: 0; transform: translateY(100%);
+            animation: pop-up 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+        }
+        @keyframes pop-up { to { opacity: 1; transform: translateY(0); } }
+        
+        /* === TYPING ANIMATION === */
+        #typing-text {
+            background-color: var(--primary);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: var(--black);
+        }
+        .typing-container .highlight {
+            border-bottom: 3px solid var(--primary);
+            padding: 0;
+            background-color: transparent;
+            border-radius: 0;
+        }
+        .typing-caret {
+            display: inline-block;
+            width: 2px;
+            height: 1.8rem;
+            background-color: var(--black);
+            animation: blink 0.7s infinite;
+            vertical-align: bottom;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* === SCROLL INDICATOR === */
+        .scroll-down-indicator {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* === BRUTALIST ELEMENTS STYLING === */
+        .card-brutalist, .btn-brutalist, .img-brutalist {
+            background-color: white;
+            border: var(--border-width) solid var(--black);
+            border-radius: 10px;
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--black);
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        .card-brutalist:hover, .btn-brutalist:hover {
+            transform: translate(var(--shadow-offset), var(--shadow-offset));
+            box-shadow: 0 0 0 var(--black);
+        }
+
+        /* === TYPOGRAPHY & TITLES === */
+        h1, h2, h3 { font-family: 'Oxanium', cursive; font-weight: 800; text-transform: uppercase; }
+        .section-title {
+            border: var(--border-width) solid var(--black);
+            background-color: var(--primary);
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 8px;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* === TOMBOL HOME LOGO === */
+        #home-logo {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1002; /* Sedikit lebih tinggi dari tombol menu agar tidak tumpang tindih jika layar sangat sempit */
+            width: 50px;
+            height: 50px;
+            
+            /* Mengadopsi gaya Neo Brutalist Anda */
+            background-color: white;
+            border: var(--border-width) solid var(--black);
+            border-radius: 10px; /* Samakan dengan .card-brutalist */
+            box-shadow: 3px 3px 0px var(--black);
+            
+            /* Styling untuk teks 'AW' */
+            font-family: 'Oxanium', cursive;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--black);
+            text-decoration: none;
+            
+            /* Posisi teks di tengah kotak */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* Transisi hover yang sama dengan elemen lain */
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        #home-logo:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 0 0 0 var(--black);
+            color: var(--black);
+        }
+
+        /* === MOBILE NAVIGATION MENU === */
+        #menu-open-btn-mobile {
+            display: block !important; position: fixed; top: 15px; right: 15px;
+            z-index: 1001; width: 50px; height: 50px;
+            background-color: white; border: var(--border-width) solid var(--black);
+            border-radius: 50%; box-shadow: 3px 3px 0px var(--black);
+            transition: all 0.2s ease;
+        }
+        #menu-open-btn-mobile:hover { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--black); }
+        #fullscreen-menu { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: var(--bg); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #fullscreen-menu.active { opacity: 1; visibility: visible; }
+        #fullscreen-menu .menu-close-btn { position: absolute; top: 25px; right: 25px; font-size: 2.5rem; color: var(--black); background: none; border: none; cursor: pointer; transition: transform 0.3s ease; }
+        #fullscreen-menu .menu-close-btn:hover { transform: rotate(90deg); }
+        #fullscreen-menu ul { list-style: none; padding: 0; text-align: center; }
+        #fullscreen-menu .menu-link { font-family: 'Oxanium', cursive; font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 800; color: var(--black); text-decoration: none; padding: 5px 20px; display: block; position: relative; overflow: hidden; }
+        #fullscreen-menu .menu-link::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--primary); z-index: -1; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+        #fullscreen-menu .menu-link:hover::before { transform: translateY(0); }
+        main { padding-left: 0; }
+        
+        /* === SECTIONS & HERO === */
+        section { padding: 80px 0; }
+        #hero { min-height: 100vh; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2318181B' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        #hero h1 { font-size: clamp(2.5rem, 10vw, 5rem); line-height: 1.1; color: var(--black); }
+        #hero .fs-4 { font-size: 1.1rem !important; }
+        .typing-container { font-size: 1.1rem !important; }
+
+        .social-links a { color: var(--black); font-size: 2.2rem; margin: 0 12px; transition: all 0.2s ease; display: inline-block; }
+        .social-links a:hover { color: var(--primary); transform: translateY(-4px); }
+        .img-container { position: relative; }
+        .img-brutalist { width: 100%; height: auto; object-fit: cover; }
+        
+        /* === PROJECT CARD STYLING === */
+        .project-card { background-color: white; border: var(--border-width) solid var(--black); border-radius: 10px; overflow: hidden; transition: all 0.2s ease; box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--black); display: flex; flex-direction: column; height: 100%; }
+        .project-card:hover { transform: translate(var(--shadow-offset), var(--shadow-offset)); box-shadow: 0 0 0 var(--black); }
+        .project-card .card-media { width: 100%; height: 220px; object-fit: cover; background-color: var(--grey); border-bottom: var(--border-width) solid var(--black); }
+        .project-card .card-body { padding: 1.25rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-card .card-body p { flex-grow: 1; }
+        .project-card .tag { display: inline-block; background-color: var(--bg); border: 1px solid var(--black); border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 500; margin-right: 6px; margin-bottom: 6px; }
+        
+        /* === MARQUEE === */
+        .marquee { width: 100%; overflow: hidden; background-color: var(--primary); border-top: var(--border-width) solid var(--black); border-bottom: var(--border-width) solid var(--black); padding: 12px 0; }
+        .marquee-content { display: inline-block; white-space: nowrap; animation: marquee 25s linear infinite; font-family: 'Oxanium', cursive; font-size: 1.1rem; }
+        .marquee-content span { margin: 0 2rem; }
+        @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+        
+        /* === MEDIA & MODALS === */
+        video:fullscreen { object-fit: contain !important; background-color: black; cursor: default !important; }
+        .project-link { color: inherit; text-decoration: none; cursor: pointer; transition: all .2s ease; }
+        .project-link:hover, .project-link:focus { text-decoration: underline; }
+        #lightboxModal img { max-width: 100%; max-height: 85vh; width: auto; height: auto; object-fit: contain; }
+        .video-wrapper { position: relative; overflow: hidden; }
+        .btn-brutalist.btn-lg { padding: 0.8rem 1.5rem !important; font-size: 1rem !important; }
+
+        /* === ABOUT & SKILLS SECTION === */
+        #about .about-content h3 { font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background-color: var(--bg); border: var(--border-width) solid var(--black);
+            padding: 6px 14px; border-radius: 8px; font-weight: 500;
+            font-size: 0.9rem; transition: all 0.2s ease;
+        }
+        .skill-badge:hover { transform: translateY(-2px); box-shadow: 0 4px 0 var(--black); }
+        .skill-badge i { font-size: 1.2rem; }
+        .dm-card { background-color: var(--primary) !important; padding: 1.5rem; margin-top: 1rem; }
+        .dm-card p { margin: 0; font-weight: 500; line-height: 1.6; }
+
+        /* === WORK EXPERIENCE TIMELINE === */
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Garis vertikal di tengah */
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--black);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        /* Container untuk setiap item (card) */
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        /* Titik pada timeline */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--primary);
+            border: 3px solid var(--black);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Posisi item di kiri */
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        /* Posisi item di kanan */
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        /* Atur posisi titik untuk item di kanan */
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Card konten */
+        .timeline-content {
+            padding: 1.25rem;
+            position: relative;
+            border-radius: 10px;
+            text-align: left; /* Konten di dalam card rata kiri */
+        }
+
+        .timeline-content h5 {
+            font-family: 'Oxanium', cursive;
+            font-weight: 700;
+        }
+
+        /* === RESPONSIVE UNTUK TIMELINE (MOBILE) === */
+        @media screen and (max-width: 768px) {
+            /* Pindahkan garis timeline ke kiri */
+            .timeline-container::after {
+                left: 20px;
+            }
+
+            /* Buat semua item memakan lebar penuh */
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 15px;
+            }
+
+            /* Pindahkan semua item ke kanan dari garis */
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            /* Pindahkan semua titik ke garis di kiri */
+            .timeline-item::after,
+            .timeline-item:nth-child(even)::after {
+                left: 10px;
+            }
+        }
+
+
+        /* === FLOATING EMAIL === */
+        #floating-email {
+            position: fixed;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #18181B;
+            letter-spacing: 0.1em;
+            z-index: 1000;
+        }
+        #floating-email a { color: inherit; text-decoration: none; }
+        @media (max-width: 768px) {
+            #floating-email { display: none; }
+        }
+
+        /* === [NEW] PROJECT ARCHIVE MODAL STYLING === */
+        #archiveModal .modal-content {
+            background-color: var(--bg);
+            border: var(--border-width) solid var(--black);
+            border-radius: 10px;
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--black);
+        }
+        #archiveModal .modal-header {
+            border-bottom: var(--border-width) solid var(--black);
+            background-color: var(--primary);
+        }
+        #archiveModal .modal-header .btn-close {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+        }
+        #archiveModal table {
+            width: 100%; border-collapse: collapse; font-size: 0.9rem;
+        }
+        #archiveModal th, #archiveModal td {
+            border: var(--border-width) solid var(--black);
+            padding: 10px 12px; text-align: left; vertical-align: middle;
+        }
+        #archiveModal thead { background-color: var(--grey); }
+        #archiveModal thead th { font-family: 'Oxanium', cursive; font-weight: 700; text-transform: uppercase; }
+        #archiveModal tbody tr:hover { background-color: var(--grey); }
+        #archiveModal .archive-link {
+            font-weight: 600; color: var(--black); text-decoration: none;
+            display: inline-flex; align-items: center; gap: 4px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        #archiveModal .archive-link:hover { border-bottom-color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div id="welcome-screen">
+        <div class="welcome-text" id="welcome-text-container"></div>
+    </div>
+    
+    <button id="menu-open-btn-mobile" aria-label="Buka Menu">
+        <i class='bx bx-grid-alt fs-2'></i>
+    </button>
+    <a href="#hero" id="home-logo" aria-label="Kembali ke Home">AW</a>
+    <div id="fullscreen-menu">
+        <button class="menu-close-btn" aria-label="Tutup Menu">&times;</button>
+        <ul>
+            <li><a href="#about" class="menu-link">About</a></li>
+            <li><a href="#experience" class="menu-link">Work Experience</a></li>
+            <li><a href="#projects" class="menu-link">Projects</a></li>
+            <li><a href="#contact" class="menu-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+        <section id="hero" class="d-flex flex-column justify-content-center px-3">
+            <div class="container text-center text-md-start">
+                <p class="fs-4 fw-bold" data-aos="fade-up">👋 Hi, I'm</p>
+                <h1 data-aos="fade-up" data-aos-delay="100">Aji Wijayatama</h1>
+                <div class="fs-4 mt-3 mx-auto mx-md-0 typing-container" style="max-width: 650px;" data-aos="fade-up" data-aos-delay="200">
+                    <p class="mt-2">
+                        <span class="highlight">🚀 Passionate in:</span> <br class="d-md-none">
+                        <span id="typing-text" class="text-secondary"></span><span class="typing-caret"></span>
+                    </p>
+                </div>
+                <div class="social-links mt-4" data-aos="fade-up" data-aos-delay="300">
+                    <a href="https://www.instagram.com/aji.iiii?igsh=MWhta2Zkd3dnMDVwOQ%3D%3D&utm_source=qr" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://github.com/ajiwijayatamaa/PortofolioProjects" aria-label="Github"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.linkedin.com/in/ajiwijayatama/" aria-label="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
+                </div>
+                <a href="#about" class="btn-brutalist btn btn-lg mt-5 fw-bold">Check out my journey!<i class='bx bx-down-arrow-alt ms-2'></i></a>
+            </div>
+        </section>
+        
+        <section id="about" class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-4" data-aos="fade-right">
+                    <div class="img-container">
+                        <img src="Image/Foji3.jpeg" alt="Foto Aji Wijayatama" class="img-brutalist">
+                    </div>
+                </div>
+                <div class="col-lg-8 about-content" data-aos="fade-left">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="fs-5 lh-base">
+                        Fresh graduate Information Systems with hands-on experience in website development and management, 
+                        executing digital marketing campaigns, and collaborating with cross-functional teams to deliver impactful, results
+                        oriented projects. Strong interest in web development, digital marketing, and business strategy
+                    </p>
+                    
+                    <h3>My Skills</h3>
+                    <div class="skills-container">
+                        <span class="skill-badge"><i class='bx bxl-html5' style="color: #E44D26;"></i> HTML</span>
+                        <span class="skill-badge"><i class='bx bxl-css3' style="color: #1572B6;"></i> CSS</span>
+                        <span class="skill-badge"><i class='bx bxl-javascript' style="color: #F0DB4F;"></i> JavaScript</span>
+                        <span class="skill-badge"><i class='bx bxs-data' style="color: #00758F;"></i> MySQL</span>
+                        <span class="skill-badge"><i class='bx bxl-laravel' style="color: #FF2D20;"></i> Laravel</span>
+                        <span class="skill-badge"><i class='bx bxl-bootstrap' style="color: #7952B3;"></i> Bootstrap</span>
+                        <span class="skill-badge"><i class='bx bxl-microsoft' style="color: #F25022;"></i> Microsoft Office</span>
+                        <span class="skill-badge"><i class='bx bxs-slideshow' style="color: #D35400;"></i> PowerPoint</span>
+                        <span class="skill-badge"><i class='bx bxs-video-plus' style="color: #00C469;"></i> CapCut</span>
+                        <span class="skill-badge"><i class='bx bxs-palette' style="color: #00C4CC;"></i> Canva</span>
+                    </div>
+
+                    <h3>📈Digital Marketing</h3>
+                    <div class="card-brutalist dm-card">
+                        <p>
+                            Basic understanding of key digital marketing strategies, including <strong>Search Engine Optimization (SEO)</strong>, <strong>Social Media Management</strong>, and <strong>Content Marketing</strong> to build brand presence and drive engagement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="experience" class="container">
+            <div class="text-center">
+                <h2 class="section-title">Work Experience</h2>
+            </div>
+            <div class="timeline-container mt-5">
+                
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-content card-brutalist">
+                        <h5> Liaison Officer (Freelance/Event-Based)</h5>
+                        <p class="text-secondary small mb-2"><strong> Yayasan Amirah (in collaboration with Formula E) - Climateability Event</strong> | Jun 2025</p>
+                        <ul class="text-start small lh-base ps-3">
+                            <li>Assisted VIP guests and facilitated effective communication with event organizers.</li>
+                            <li>Coordinated with stakeholders to ensure smooth event execution.</li>
+                            <li>Managed guest directions and logistics support.</li>
+                            <li>Maintained event protocols and ensured guest comfort.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-content card-brutalist">
+                        <h5>Freelance Event Coordinator (LO & PIC) & Social Media Content Creator</h5>
+                        <p class="text-secondary small mb-2"><strong> PT. Bumi Wisata Indonesia</strong> | Jul 2025</p>
+                        <ul class="text-start small lh-base ps-3">
+                            <li>Represented PT. Bumi Wisata Indonesia as Person In Charge (PIC) and Liaison Officer (LO) during events</li>
+                            <li> Successfully managed and supported over 6 high-profile clients on behalf of PT. Bumi Wisata Indonesia, including leading private companies and government institutions.</li>
+                            <li>Oversaw and ensured smooth operations and excellent service delivery to guests and participants on behalf of the company</li>
+                            <li>Created engaging short-form video content for social media platforms to support digital marketing</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-content card-brutalist">
+                        <h5>Marketing & Operations Assistant</h5>
+                        <p class="text-secondary small mb-2"><strong>Family Business "Indonesia Furniture"</strong> | Jul 2025</p>
+                        <ul class="text-start small lh-base ps-3">
+                            <li>Managed 3 instagram reels ads campaigns with a profile visit objective</li>
+                            <li>Delivered a total of 199 profile visits, reaching over 8,700 unique accounts with an average cost per visit of IDR 784</li>
+                            <li>Achieved over 3,700 three-second video plays and 45+ total engagements (likes, comments, shares, saves).</li>
+                            <li> Provide exceptional customer service to walk-in clients by delivering detailed product knowledge and efficiently processing sales transactions.</li>
+                            <li>Manage procurement of tools, materials, and supplies to ensure seamless daily operational flow</li>
+                            <li> Oversee the delivery and installation process of finished products at customer locations, ensuring quality control and fostering strong client relationships through proactive communication.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="container">
+            <div class="text-center">
+                <h2 class="section-title">My Projects</h2>
+            </div>
+            <div class="row g-4 g-lg-5 mt-2">
+                <div class="col-lg-6" data-aos="zoom-in-up">
+                    <div class="project-card">
+                        <div class="video-wrapper">
+                            <video 
+                                src="Video/HasilDariGabunganVideo.mp4" 
+                                controls 
+                                controlsList="nodownload" 
+                                class="card-media portrait-video" 
+                                style="filter: brightness(0.8); box-shadow: inset 0 0 90px rgba(0,0,0,0.3);">
+                            </video>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="fs-5">
+                                <a href="https://www.instagram.com/reel/DLjxAcTuuB5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="project-link" aria-label="Buka reel Instagram">
+                                    PT. Bumi Wisata Indonesia
+                                </a>
+                            </h3>
+                            <p class="text-secondary small">Project showcase: Documentation video created for PT. Bumi Wisata Indonesia branding and digital marketing strategy.</p>
+                            <div><span class="tag">Instagram</span><span class="tag">Capcut</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="zoom-in-up">
+                    <div class="project-card">
+                        <div class="video-wrapper">
+                            <video 
+                                src="Video/SerKursiAkar.mp4" 
+                                controls 
+                                controlsList="nodownload" 
+                                class="card-media portrait-video" 
+                                style="filter: brightness(0.8); box-shadow: inset 0 0 90px rgba(0,0,0,0.3);">
+                            </video>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="fs-5">
+                                <a href="https://www.instagram.com/reel/CysrFafvF3s/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="project-link" aria-label="Buka reel Instagram">
+                                Indonesia Furniture
+                                </a>
+                            </h3>
+                            <p class="text-secondary small">Project showcase: Documentation video created for Indonesia Furniture branding and digital marketing strategy.</p>
+                            <div><span class="tag">Instagram</span><span class="tag">Capcut</span><span class="tag">TikTok</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="zoom-in-up">
+                    <div class="project-card">
+                        <button 
+                            class="btn p-0 border-0 bg-transparent w-100" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#lightboxModal" 
+                            data-img-src0="Image/image1.jpeg"
+                            data-img-src1="Image/image2.jpeg"
+                            data-img-src2="Image/image3.jpeg"
+                            data-img-src3="Image/image4.jpeg">
+                            <div class="video-wrapper">
+                                <img src="Image/image1.jpeg" alt="Indonesia Furniture" class="card-media" style="filter: brightness(0.8); box-shadow: inset 0 0 90px rgba(0,0,0,0.3);">
+                            </div>
+                            <div class="card-body text-start">
+                                <h3 class="fs-5">Indonesia Furniture</h3>
+                                <p class="text-secondary small">
+                                    Project Showcase: Instagram Story visuals created for Indonesia Furniture to support branding and digital marketing.
+                                </p>
+                                <div><span class="tag">Instagram</span><span class="tag">Capcut</span></div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="zoom-in-up">
+                    <div class="project-card">
+                        <button 
+                            class="btn p-0 border-0 bg-transparent w-100" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#lightboxModal" 
+                            data-img-src0="Image/ImageBWI1.jpeg"
+                            data-img-src1="Image/ImageBWI2.jpeg"
+                            data-img-src2="Image/ImageBWI3.jpeg"
+                            data-img-src3="Image/ImageBWI4.jpeg"
+                            data-img-src4="Image/ImageBWI5.jpeg"
+                            data-img-src5="Image/ImageBWI6.jpeg">
+                            <div class="video-wrapper">
+                                <img src="Image/ImageBWI1.jpeg" alt="PT. Bumi Wisata Indonesia" class="card-media" style="filter: brightness(0.8); box-shadow: inset 0 0 90px rgba(0,0,0,0.3);">
+                            </div>
+                            <div class="card-body text-start">
+                                <h3 class="fs-5">PT. Bumi Wisata Indonesia</h3>
+                                <p class="text-secondary small">
+                                    Project Showcase: Instagram Story visuals created for PT. Bumi Wisata Indonesia to support branding and digital marketing.
+                                </p>
+                                <div><span class="tag">Instagram</span><span class="tag">Capcut</span></div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- === [NEW] Project Archive Button === -->
+            <div class="text-center mt-5 pt-4" data-aos="fade-up">
+                <button class="btn btn-brutalist btn-lg fw-bold" data-bs-toggle="modal" data-bs-target="#archiveModal">
+                    View Project Archive
+                    <i class='bx bx-archive ms-2'></i>
+                </button>
+            </div>
+        </section>
+
+        <section id="contact" class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Contact Me</h2>
+                    <p class="fs-5 mb-5">
+                        Have a project in mind or just want to connect? I'd love to hear from you. Feel free to reach out below.
+                    </p>
+                    <div id="floating-email">
+                        <a href="mailto:ajiwijayatamaa@gmail.com">ajiwijayatamaa@gmail.com</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="mailto:ajiwijayatamaa@gmail.com" aria-label="Email"><i class='bx bx-envelope'></i></a>
+                        <a href="https://www.linkedin.com/in/ajiwijayatama/" aria-label="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
+                        <a href="https://www.instagram.com/aji.iiii?igsh=MWhta2Zkd3dnMDVwOQ%3D%3D&utm_source=qr" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-5">
+            <div class="marquee">
+                <div class="marquee-content">
+                    <span>AVAILABLE FOR WORK</span> ✨ <span>LET'S COLLABORATE</span> ✨ <span>AVAILABLE FOR WORK</span> ✨ <span>LET'S COLLABORATE</span> ✨ <span>AVAILABLE FOR WORK</span> ✨ <span>LET'S COLLABORATE</span> ✨ <span>AVAILABLE FOR WORK</span> ✨ <span>LET'S COLLABORATE</span> ✨
+                </div>
+            </div>
+            <p class="text-center py-4 text-secondary small">© 2025 Aji Wijayatama. Fueled by passion (and plenty of coffee).</p>
+        </footer>
+    </main>
+
+    <!-- Lightbox Modal for Images -->
+    <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-body p-0 position-relative">
+                    <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div id="lightboxCarousel" class="carousel slide">
+                        <div class="carousel-inner"></div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#lightboxCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#lightboxCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- === [NEW] Project Archive Modal === -->
+    <div class="modal fade" id="archiveModal" tabindex="-1" aria-labelledby="archiveModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title fs-5" id="archiveModalLabel">Project Archive</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Project</th>
+                                    <th>Built With</th>
+                                    <th>Type</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2023 - Present</td>
+                                    <td>Digital Marketing Campaign for Indonesia Furniture</td>
+                                    <td>Instagtam, CapCut</td>
+                                    <td>Family Business</td>
+                                    <td><a href="https://www.instagram.com/furniturejati.ind?igsh=dnR0bXhxM3o2ZWJl&utm_source=qr" target="_blank" class="archive-link">Instagram <i class='bx bxl-instagram'></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>2023 - 2025</td>
+                                    <td>Digital Marketing Campaign for PT. Bumi Wisata Indonesia</td>
+                                    <td>Instagtam, CapCut</td>
+                                    <td>Freelance</td>
+                                    <td><a href="https://www.instagram.com/kepulauanseribujakarta?igsh=MWppM3Fvcjg1YWZhaA%3D%3D&utm_source=qr" target="_blank" class="archive-link">Instagram <i class='bx bxl-instagram'></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>2025</td>
+                                    <td>Ecommerce Jati Furniture</td>
+                                    <td>HTML, CSS, JS, Bootstrap, Laravel, MySQL</td>
+                                    <td>Academic</td>
+                                    <td><a href="https://github.com/ajiwijayatamaa/PortofolioProjects/tree/main/ecommerce-furniture-jati" target="_blank" class="archive-link">GitHub <i class='bx bxl-github'></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>2025</td>
+                                    <td>Portofolio Projects</td>
+                                    <td>HTML, CSS, JS, Bootstrap, Laravel, MySQL</td>
+                                    <td>Personal</td>
+                                    <td><a href="https://github.com/ajiwijayatamaa/PortofolioProjects.git" target="_blank" class="archive-link">GitHub <i class='bx bxl-github'></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>2025</td>
+                                    <td>Personal Portfolio Website</td>
+                                    <td>HTML, CSS, JS, Bootstrap</td>
+                                    <td>Personal</td>
+                                    <td><a href="https://github.com/ajiwijayatamaa/AjiWijayatamaPortofolio.git" target="_blank" class="archive-link">GitHub <i class='bx bxl-github'></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fallback for local bootstrap JS -->
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+    <!-- CDN for bootstrap JS with fallback -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>window.bootstrap || document.write('<script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.js"><\/script>')</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Animate on Scroll
+            AOS.init({ duration: 800, easing: 'ease-in-out', once: true, offset: 50 });
+
+            // Fullscreen Menu Logic
+            const menuOpenBtnMobile = document.getElementById('menu-open-btn-mobile');
+            const menuCloseBtn = document.querySelector('#fullscreen-menu .menu-close-btn');
+            const fullscreenMenu = document.getElementById('fullscreen-menu');
+            const menuLinks = document.querySelectorAll('#fullscreen-menu .menu-link');
+
+            const openMenu = () => fullscreenMenu.classList.add('active');
+            const closeMenu = () => fullscreenMenu.classList.remove('active');
+
+            menuOpenBtnMobile.addEventListener('click', openMenu);
+            menuCloseBtn.addEventListener('click', closeMenu);
+            
+            // Close menu and scroll smoothly
+            menuLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    closeMenu();
+                    // Wait for menu to close before scrolling
+                    setTimeout(() => {
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, 300); 
+                });
+            });
+
+            // Smooth scroll for other anchor links
+            document.querySelectorAll('a[href^="#"]:not(.menu-link)').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if(targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // Typing Animation Logic
+            const typingTextElement = document.getElementById('typing-text');
+            if(typingTextElement) {
+                const wordsToType = ["Web Development", "Digital Marketing", "Business Strategy"];
+                let wordIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+
+                function type() {
+                    const currentWord = wordsToType[wordIndex];
+                    const typeSpeed = isDeleting ? 50 : 120;
+                    
+                    if (isDeleting) {
+                        typingTextElement.textContent = currentWord.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        typingTextElement.textContent = currentWord.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+
+                    if (!isDeleting && charIndex === currentWord.length) {
+                        setTimeout(() => { isDeleting = true; type(); }, 2000);
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % wordsToType.length;
+                        setTimeout(type, 500);
+                    } else {
+                        setTimeout(type, typeSpeed);
+                    }
+                }
+                setTimeout(type, 1500); 
+            }
+
+            // Lightbox Carousel Logic
+            const lightboxModal = document.getElementById('lightboxModal');
+            if(lightboxModal) {
+                lightboxModal.addEventListener('show.bs.modal', event => {
+                    const button = event.relatedTarget;
+                    const carouselInner = lightboxModal.querySelector('.carousel-inner');
+                    carouselInner.innerHTML = ''; // Clear previous images
+                    let i = 0;
+                    while (button.hasAttribute(`data-img-src${i}`)) {
+                        const imgSrc = button.getAttribute(`data-img-src${i}`);
+                        const carouselItem = document.createElement('div');
+                        carouselItem.className = `carousel-item ${i === 0 ? 'active' : ''}`;
+                        const img = document.createElement('img');
+                        img.src = imgSrc;
+                        img.className = 'd-block mx-auto rounded';
+                        img.alt = `Project Image ${i + 1}`;
+                        carouselItem.appendChild(img);
+                        carouselInner.appendChild(carouselItem);
+                        i++;
+                    }
+                });
+            }
+        });
+
+        // Welcome Screen Logic
+        window.addEventListener('load', () => {
+            const welcomeScreen = document.getElementById('welcome-screen');
+            const welcomeTextContainer = document.getElementById('welcome-text-container');
+            const welcomeText = "Let’s make cool stuff together";
+
+            if (welcomeTextContainer && welcomeTextContainer.children.length === 0) {
+                welcomeText.split('').forEach((char, index) => {
+                    const charSpan = document.createElement('span');
+                    charSpan.innerHTML = char === ' ' ? '&nbsp;' : char;
+                    charSpan.style.animationDelay = `${index * 0.05}s`;
+                    welcomeTextContainer.appendChild(charSpan);
+                });
+            }
+            
+            setTimeout(() => {
+                if(welcomeScreen) welcomeScreen.classList.add('hidden');
+            }, (welcomeText.length * 50) + 1200);
+        });
+    </script>
+</body>
+</html>
