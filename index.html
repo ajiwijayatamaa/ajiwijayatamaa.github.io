@@ -370,6 +370,73 @@
             transition: border-color 0.2s ease;
         }
         #archiveModal .archive-link:hover { border-bottom-color: var(--primary); }
+
+        /* === CERTIFICATION STYLING === */
+        .certification-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem; /* Add margin for mobile view */
+        }
+
+        .certification-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: white;
+            border: var(--border-width) solid var(--black);
+            border-radius: 10px;
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--black);
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .certification-card:hover {
+            transform: translate(var(--shadow-offset), var(--shadow-offset));
+            box-shadow: 0 0 0 var(--black);
+        }
+
+        .certification-icon i {
+            font-size: 2.5rem;
+            color: var(--black);
+        }
+
+        .certification-info {
+            flex-grow: 1;
+        }
+
+        .certification-info h5 {
+            font-family: 'Oxanium', cursive;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .certification-info p {
+            margin-bottom: 0;
+        }
+
+        .certification-link {
+            font-size: 1.5rem;
+            color: var(--black);
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .certification-link:hover {
+            transform: scale(1.1);
+            color: var(--primary);
+        }
+
+        /* Responsive adjustment for certification title */
+        @media (max-width: 992px) {
+            #projects .col-lg-4 .section-title {
+                margin-top: 2rem;
+            }
+            .certification-list {
+                margin-top: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -500,112 +567,75 @@
         </section>
 
         <section id="projects" class="container">
-            <div class="text-center">
-                <h2 class="section-title">My Projects</h2>
-            </div>
-            <div class="row g-4 g-lg-5 mt-2">
-                <div class="col-lg-6" data-aos="zoom-in-up">
-                    <div class="project-card">
-                        <div class="video-wrapper">
-                            <video 
-                                src="Video/HasilDariGabunganVideo.mp4" 
-                                controls 
-                                controlsList="nodownload" 
-                                class="card-media portrait-video" 
-                                style="filter: brightness(0.8); box-shadow: inset 0 0 90px rgba(0,0,0,0.3);">
-                            </video>
+            <div class="row align-items-start g-5">
+
+                <div class="col-lg-8">
+                    <div class="text-center text-lg-start">
+                        <h2 class="section-title">My Projects</h2>
+                    </div>
+                    <div class="row g-4 mt-2">
+                        <div class="col-md-6" data-aos="zoom-in-up">
+                            <div class="project-card">
+                                <div class="video-wrapper">
+                                    <video src="Video/HasilDariGabunganVideo.mp4" controls controlsList="nodownload" class="card-media portrait-video" style="filter: brightness(0.8); box-shadow: inset 0 0 90px rgba(0,0,0,0.3);"></video>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="fs-5">
+                                        <a href="https://www.instagram.com/reel/DLjxAcTuuB5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="project-link" target="_blank" aria-label="Buka reel Instagram">
+                                            PT. Bumi Wisata Indonesia
+                                        </a>
+                                    </h3>
+                                    <p class="text-secondary small">Video documentation for branding and digital marketing.</p>
+                                    <div><span class="tag">Instagram</span><span class="tag">CapCut</span></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="fs-5">
-                                <a href="https://www.instagram.com/reel/DLjxAcTuuB5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="project-link" aria-label="Buka reel Instagram">
-                                    PT. Bumi Wisata Indonesia
-                                </a>
-                            </h3>
-                            <p class="text-secondary small">Project showcase: Documentation video created for PT. Bumi Wisata Indonesia branding and digital marketing strategy.</p>
-                            <div><span class="tag">Instagram</span><span class="tag">Capcut</span></div>
+                        <div class="col-md-6" data-aos="zoom-in-up">
+                            <div class="project-card">
+                                <div class="video-wrapper">
+                                    <video src="Video/SerKursiAkar.mp4" controls controlsList="nodownload" class="card-media portrait-video" style="filter: brightness(0.8); box-shadow: inset 0 0 90px rgba(0,0,0,0.3);"></video>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="fs-5">
+                                        <a href="https://www.instagram.com/reel/CysrFafvF3s/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="project-link" target="_blank" aria-label="Buka reel Instagram">
+                                            Indonesia Furniture
+                                        </a>
+                                    </h3>
+                                    <p class="text-secondary small">Video documentation for branding and digital marketing.</p>
+                                    <div><span class="tag">Instagram</span><span class="tag">CapCut</span><span class="tag">TikTok</span></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-6" data-aos="zoom-in-up">
-                    <div class="project-card">
-                        <div class="video-wrapper">
-                            <video 
-                                src="Video/SerKursiAkar.mp4" 
-                                controls 
-                                controlsList="nodownload" 
-                                class="card-media portrait-video" 
-                                style="filter: brightness(0.8); box-shadow: inset 0 0 90px rgba(0,0,0,0.3);">
-                            </video>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="fs-5">
-                                <a href="https://www.instagram.com/reel/CysrFafvF3s/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="project-link" aria-label="Buka reel Instagram">
-                                Indonesia Furniture
-                                </a>
-                            </h3>
-                            <p class="text-secondary small">Project showcase: Documentation video created for Indonesia Furniture branding and digital marketing strategy.</p>
-                            <div><span class="tag">Instagram</span><span class="tag">Capcut</span><span class="tag">TikTok</span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6" data-aos="zoom-in-up">
-                    <div class="project-card">
-                        <button 
-                            class="btn p-0 border-0 bg-transparent w-100" 
-                            data-bs-toggle="modal" 
-                            data-bs-target="#lightboxModal" 
-                            data-img-src0="Image/image1.jpeg"
-                            data-img-src1="Image/image2.jpeg"
-                            data-img-src2="Image/image3.jpeg"
-                            data-img-src3="Image/image4.jpeg">
-                            <div class="video-wrapper">
-                                <img src="Image/image1.jpeg" alt="Indonesia Furniture" class="card-media" style="filter: brightness(0.8); box-shadow: inset 0 0 90px rgba(0,0,0,0.3);">
-                            </div>
-                            <div class="card-body text-start">
-                                <h3 class="fs-5">Indonesia Furniture</h3>
-                                <p class="text-secondary small">
-                                    Project Showcase: Instagram Story visuals created for Indonesia Furniture to support branding and digital marketing.
-                                </p>
-                                <div><span class="tag">Instagram</span><span class="tag">Capcut</span></div>
-                            </div>
+                    <div class="text-center mt-5">
+                        <button type="button" class="btn-brutalist btn btn-lg fw-bold" data-bs-toggle="modal" data-bs-target="#archiveModal">
+                            View Project Archive
                         </button>
                     </div>
                 </div>
 
-                <div class="col-lg-6" data-aos="zoom-in-up">
-                    <div class="project-card">
-                        <button 
-                            class="btn p-0 border-0 bg-transparent w-100" 
-                            data-bs-toggle="modal" 
-                            data-bs-target="#lightboxModal" 
-                            data-img-src0="Image/ImageBWI1.jpeg"
-                            data-img-src1="Image/ImageBWI2.jpeg"
-                            data-img-src2="Image/ImageBWI3.jpeg"
-                            data-img-src3="Image/ImageBWI4.jpeg"
-                            data-img-src4="Image/ImageBWI5.jpeg"
-                            data-img-src5="Image/ImageBWI6.jpeg">
-                            <div class="video-wrapper">
-                                <img src="Image/ImageBWI1.jpeg" alt="PT. Bumi Wisata Indonesia" class="card-media" style="filter: brightness(0.8); box-shadow: inset 0 0 90px rgba(0,0,0,0.3);">
+                <div class="col-lg-4">
+                    <div class="text-center text-lg-start">
+                        <h2 class="section-title">Certifications</h2>
+                    </div>
+                    <div class="certification-list mt-lg-2">
+                        <div class="certification-card" data-aos="fade-left">
+                            <div class="certification-icon"><i class='bx bxs-file-pdf'></i></div>
+                            <div class="certification-info">
+                                <h5>Digital Marketing</h5>
                             </div>
-                            <div class="card-body text-start">
-                                <h3 class="fs-5">PT. Bumi Wisata Indonesia</h3>
-                                <p class="text-secondary small">
-                                    Project Showcase: Instagram Story visuals created for PT. Bumi Wisata Indonesia to support branding and digital marketing.
-                                </p>
-                                <div><span class="tag">Instagram</span><span class="tag">Capcut</span></div>
+                            <a href="https://drive.google.com/file/d/1DDPaMPbrXiJTR8rYkluM-I8vvRu-SCtl/view?usp=sharing" target="_blank" class="certification-link" aria-label="View Certificate"><i class='bx bx-link-external'></i></a>
+                        </div>
+                        <div class="certification-card" data-aos="fade-left" data-aos-delay="200">
+                            <div class="certification-icon"><i class='bx bxl-html5'></i></div>
+                            <div class="certification-info">
+                                <h5>Dasar Pemrograman Web</h5>
                             </div>
-                        </button>
+                            <a href="https://drive.google.com/drive/folders/1RWIFcKCcRd7czM51vZQqVeBmTpcTlfwn?usp=sharing" target="_blank" class="certification-link" aria-label="View Certificate"><i class='bx bx-link-external'></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- === [NEW] Project Archive Button === -->
-            <div class="text-center mt-5 pt-4" data-aos="fade-up">
-                <button class="btn btn-brutalist btn-lg fw-bold" data-bs-toggle="modal" data-bs-target="#archiveModal">
-                    View Project Archive
-                    <i class='bx bx-archive ms-2'></i>
-                </button>
+
             </div>
         </section>
 
