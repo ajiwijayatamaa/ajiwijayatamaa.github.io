@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* === THEME VARIABLES: NEO BRUTALISM (REFINED) === */
+       /* === THEME VARIABLES: NEO BRUTALISM (REFINED) === */
         :root {
             --bg: #F4F4F4;
             --primary: #BEF264;
@@ -54,7 +54,7 @@
             animation: pop-up 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
         }
         @keyframes pop-up { to { opacity: 1; transform: translateY(0); } }
-        
+
         /* === TYPING ANIMATION === */
         #typing-text {
             background-color: var(--primary);
@@ -118,38 +118,29 @@
             font-size: clamp(1.2rem, 3vw, 1.8rem);
             margin-bottom: 1.5rem;
         }
-        
+
         /* === TOMBOL HOME LOGO === */
         #home-logo {
             position: fixed;
             top: 15px;
             left: 15px;
-            z-index: 1002; /* Sedikit lebih tinggi dari tombol menu agar tidak tumpang tindih jika layar sangat sempit */
+            z-index: 1002;
             width: 50px;
             height: 50px;
-            
-            /* Mengadopsi gaya Neo Brutalist Anda */
             background-color: white;
             border: var(--border-width) solid var(--black);
-            border-radius: 10px; /* Samakan dengan .card-brutalist */
+            border-radius: 10px;
             box-shadow: 3px 3px 0px var(--black);
-            
-            /* Styling untuk teks 'AW' */
             font-family: 'Oxanium', cursive;
             font-weight: 800;
             font-size: 1.2rem;
             color: var(--black);
             text-decoration: none;
-            
-            /* Posisi teks di tengah kotak */
             display: flex;
             justify-content: center;
             align-items: center;
-
-            /* Transisi hover yang sama dengan elemen lain */
             transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
-
         #home-logo:hover {
             transform: translate(3px, 3px);
             box-shadow: 0 0 0 var(--black);
@@ -174,19 +165,18 @@
         #fullscreen-menu .menu-link::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--primary); z-index: -1; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
         #fullscreen-menu .menu-link:hover::before { transform: translateY(0); }
         main { padding-left: 0; }
-        
+
         /* === SECTIONS & HERO === */
         section { padding: 80px 0; }
         #hero { min-height: 100vh; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2318181B' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
         #hero h1 { font-size: clamp(2.5rem, 10vw, 5rem); line-height: 1.1; color: var(--black); }
         #hero .fs-4 { font-size: 1.1rem !important; }
         .typing-container { font-size: 1.1rem !important; }
-
         .social-links a { color: var(--black); font-size: 2.2rem; margin: 0 12px; transition: all 0.2s ease; display: inline-block; }
         .social-links a:hover { color: var(--primary); transform: translateY(-4px); }
         .img-container { position: relative; }
         .img-brutalist { width: 100%; height: auto; object-fit: cover; }
-        
+
         /* === PROJECT CARD STYLING === */
         .project-card { background-color: white; border: var(--border-width) solid var(--black); border-radius: 10px; overflow: hidden; transition: all 0.2s ease; box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--black); display: flex; flex-direction: column; height: 100%; }
         .project-card:hover { transform: translate(var(--shadow-offset), var(--shadow-offset)); box-shadow: 0 0 0 var(--black); }
@@ -194,13 +184,13 @@
         .project-card .card-body { padding: 1.25rem; flex-grow: 1; display: flex; flex-direction: column; }
         .project-card .card-body p { flex-grow: 1; }
         .project-card .tag { display: inline-block; background-color: var(--bg); border: 1px solid var(--black); border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 500; margin-right: 6px; margin-bottom: 6px; }
-        
+
         /* === MARQUEE === */
         .marquee { width: 100%; overflow: hidden; background-color: var(--primary); border-top: var(--border-width) solid var(--black); border-bottom: var(--border-width) solid var(--black); padding: 12px 0; }
         .marquee-content { display: inline-block; white-space: nowrap; animation: marquee 25s linear infinite; font-family: 'Oxanium', cursive; font-size: 1.1rem; }
         .marquee-content span { margin: 0 2rem; }
         @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
-        
+
         /* === MEDIA & MODALS === */
         video:fullscreen { object-fit: contain !important; background-color: black; cursor: default !important; }
         .project-link { color: inherit; text-decoration: none; cursor: pointer; transition: all .2s ease; }
@@ -230,8 +220,6 @@
             margin: 0 auto;
             padding: 20px 0;
         }
-
-        /* Garis vertikal di tengah */
         .timeline-container::after {
             content: '';
             position: absolute;
@@ -242,15 +230,11 @@
             left: 50%;
             margin-left: -1.5px;
         }
-
-        /* Container untuk setiap item (card) */
         .timeline-item {
             padding: 10px 40px;
             position: relative;
             width: 50%;
         }
-
-        /* Titik pada timeline */
         .timeline-item::after {
             content: '';
             position: absolute;
@@ -263,62 +247,43 @@
             border-radius: 50%;
             z-index: 1;
         }
-
-        /* Posisi item di kiri */
         .timeline-item:nth-child(odd) {
             left: 0;
         }
-
-        /* Posisi item di kanan */
         .timeline-item:nth-child(even) {
             left: 50%;
         }
-
-        /* Atur posisi titik untuk item di kanan */
         .timeline-item:nth-child(even)::after {
             left: -10px;
         }
-
-        /* Card konten */
         .timeline-content {
             padding: 1.25rem;
             position: relative;
             border-radius: 10px;
-            text-align: left; /* Konten di dalam card rata kiri */
+            text-align: left;
         }
-
         .timeline-content h5 {
             font-family: 'Oxanium', cursive;
             font-weight: 700;
         }
-
-        /* === RESPONSIVE UNTUK TIMELINE (MOBILE) === */
         @media screen and (max-width: 768px) {
-            /* Pindahkan garis timeline ke kiri */
             .timeline-container::after {
                 left: 20px;
             }
-
-            /* Buat semua item memakan lebar penuh */
             .timeline-item {
                 width: 100%;
                 padding-left: 60px;
                 padding-right: 15px;
             }
-
-            /* Pindahkan semua item ke kanan dari garis */
             .timeline-item:nth-child(odd),
             .timeline-item:nth-child(even) {
                 left: 0;
             }
-
-            /* Pindahkan semua titik ke garis di kiri */
             .timeline-item::after,
             .timeline-item:nth-child(even)::after {
                 left: 10px;
             }
         }
-
 
         /* === FLOATING EMAIL === */
         #floating-email {
@@ -339,46 +304,66 @@
             #floating-email { display: none; }
         }
 
-        /* === [NEW] PROJECT ARCHIVE MODAL STYLING === */
-        #archiveModal .modal-content {
-            background-color: var(--bg);
+        /* === [NEW] PROJECT ARCHIVE STYLING === */
+        .table-responsive {
             border: var(--border-width) solid var(--black);
             border-radius: 10px;
             box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--black);
+            overflow: hidden;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
-        #archiveModal .modal-header {
-            border-bottom: var(--border-width) solid var(--black);
-            background-color: var(--primary);
+        .table-responsive:hover {
+            transform: translate(var(--shadow-offset), var(--shadow-offset));
+            box-shadow: 0 0 0 var(--black);
         }
-        #archiveModal .modal-header .btn-close {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+        .table {
+            --bs-table-bg: transparent; /* Override Bootstrap default */
+            --bs-table-border-color: var(--black);
+            margin-bottom: 0;
         }
-        #archiveModal table {
-            width: 100%; border-collapse: collapse; font-size: 0.9rem;
+        .table th, .table td {
+            border-color: var(--black);
+            padding: 1rem;
+            font-size: 0.95rem;
         }
-        #archiveModal th, #archiveModal td {
-            border: var(--border-width) solid var(--black);
-            padding: 10px 12px; text-align: left; vertical-align: middle;
+        .table thead th {
+            background-color: var(--grey);
+            font-family: 'Oxanium', cursive;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom-width: var(--border-width);
         }
-        #archiveModal thead { background-color: var(--grey); }
-        #archiveModal thead th { font-family: 'Oxanium', cursive; font-weight: 700; text-transform: uppercase; }
-        #archiveModal tbody tr:hover { background-color: var(--grey); }
-        #archiveModal .archive-link {
-            font-weight: 600; color: var(--black); text-decoration: none;
-            display: inline-flex; align-items: center; gap: 4px;
+        .table tbody tr {
+            background-color: white;
+            transition: background-color 0.2s ease;
+        }
+        .table tbody tr:hover {
+            background-color: var(--grey);
+        }
+        .table-bordered > :not(caption) > * > * {
+            border-width: var(--border-width);
+        }
+        .archive-link {
+            font-weight: 600;
+            color: var(--black);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
             border-bottom: 2px solid transparent;
             transition: border-color 0.2s ease;
         }
-        #archiveModal .archive-link:hover { border-bottom-color: var(--primary); }
+        .archive-link:hover {
+            border-bottom-color: var(--primary);
+        }
 
         /* === CERTIFICATION STYLING === */
         .certification-list {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            margin-top: 1.5rem; /* Add margin for mobile view */
+            margin-top: 1.5rem;
         }
-
         .certification-card {
             display: flex;
             align-items: center;
@@ -390,44 +375,36 @@
             box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--black);
             transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
-
         .certification-card:hover {
             transform: translate(var(--shadow-offset), var(--shadow-offset));
             box-shadow: 0 0 0 var(--black);
         }
-
         .certification-icon i {
             font-size: 2.5rem;
             color: var(--black);
         }
-
         .certification-info {
             flex-grow: 1;
         }
-
         .certification-info h5 {
             font-family: 'Oxanium', cursive;
             font-weight: 700;
             margin-bottom: 0.25rem;
             font-size: 1rem;
         }
-
         .certification-info p {
             margin-bottom: 0;
         }
-
         .certification-link {
             font-size: 1.5rem;
             color: var(--black);
             text-decoration: none;
             transition: transform 0.2s ease;
         }
-
         .certification-link:hover {
             transform: scale(1.1);
             color: var(--primary);
         }
-
         /* Responsive adjustment for certification title */
         @media (max-width: 992px) {
             #projects .col-lg-4 .section-title {
@@ -495,8 +472,8 @@
                     
                     <h3>My Skills</h3>
                     <div class="skills-container">
-                        <span class="skill-badge"><i class='bx bxl-html5' style="color: #E44D26;"></i> HTML</span>
-                        <span class="skill-badge"><i class='bx bxl-css3' style="color: #1572B6;"></i> CSS</span>
+                        <span class="skill-badge"><i class='bx bxl-html5' style="color: #E44D26;"></i> HTML5</span>
+                        <span class="skill-badge"><i class='bx bxl-css3' style="color: #1572B6;"></i> CSS3</span>
                         <span class="skill-badge"><i class='bx bxl-javascript' style="color: #F0DB4F;"></i> JavaScript</span>
                         <span class="skill-badge"><i class='bx bxs-data' style="color: #00758F;"></i> MySQL</span>
                         <span class="skill-badge"><i class='bx bxl-laravel' style="color: #FF2D20;"></i> Laravel</span>
@@ -566,79 +543,96 @@
             </div>
         </section>
 
-        <section id="projects" class="container">
-            <div class="row align-items-start g-5">
+       <section id="projects" class="container"> 
+            <div class="row align-items-start g-5"> 
 
-                <div class="col-lg-8">
-                    <div class="text-center text-lg-start">
-                        <h2 class="section-title">My Projects</h2>
-                    </div>
-                    <div class="row g-4 mt-2">
-                        <div class="col-md-6" data-aos="zoom-in-up">
-                            <div class="project-card">
-                                <div class="video-wrapper">
-                                    <video src="Video/HasilDariGabunganVideo.mp4" controls controlsList="nodownload" class="card-media portrait-video" style="filter: brightness(0.8); box-shadow: inset 0 0 90px rgba(0,0,0,0.3);"></video>
-                                </div>
-                                <div class="card-body">
-                                    <h3 class="fs-5">
-                                        <a href="https://www.instagram.com/reel/DLjxAcTuuB5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="project-link" target="_blank" aria-label="Buka reel Instagram">
-                                            PT. Bumi Wisata Indonesia
-                                        </a>
-                                    </h3>
-                                    <p class="text-secondary small">Video documentation for branding and digital marketing.</p>
-                                    <div><span class="tag">Instagram</span><span class="tag">CapCut</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" data-aos="zoom-in-up">
-                            <div class="project-card">
-                                <div class="video-wrapper">
-                                    <video src="Video/SerKursiAkar.mp4" controls controlsList="nodownload" class="card-media portrait-video" style="filter: brightness(0.8); box-shadow: inset 0 0 90px rgba(0,0,0,0.3);"></video>
-                                </div>
-                                <div class="card-body">
-                                    <h3 class="fs-5">
-                                        <a href="https://www.instagram.com/reel/CysrFafvF3s/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="project-link" target="_blank" aria-label="Buka reel Instagram">
-                                            Indonesia Furniture
-                                        </a>
-                                    </h3>
-                                    <p class="text-secondary small">Video documentation for branding and digital marketing.</p>
-                                    <div><span class="tag">Instagram</span><span class="tag">CapCut</span><span class="tag">TikTok</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center mt-5">
-                        <button type="button" class="btn-brutalist btn btn-lg fw-bold" data-bs-toggle="modal" data-bs-target="#archiveModal">
-                            View Project Archive
-                        </button>
-                    </div>
-                </div>
+                <div class="col-lg-8"> 
+                    <div class="text-center text-lg-start"> 
+                        <h2 class="section-title">My Projects</h2> 
+                    </div> 
+                    <div class="table-responsive mt-4"> 
+                        <table class="table table-bordered"> 
+                            <thead> 
+                                <tr> 
+                                    <th>Year</th> 
+                                    <th>Project</th> 
+                                    <th>Built With</th> 
+                                    <th>Type</th> 
+                                    <th>Link</th> 
+                                </tr> 
+                            </thead> 
+                            <tbody> 
+                                <tr> 
+                                    <td>2023 - Present</td> 
+                                    <td>Digital Marketing Campaign for Indonesia Furniture</td> 
+                                    <td>Instagram, CapCut</td> 
+                                    <td>Family Business</td> 
+                                    <td><a href="https://www.instagram.com/furniturejati.ind?igsh=dnR0bXhxM3o2ZWJl&utm_source=qr" target="_blank" class="archive-link">Instagram <i class='bx bxl-instagram'></i></a></td> 
+                                </tr> 
+                                <tr> 
+                                    <td>2023 - 2025</td> 
+                                    <td>Digital Marketing Campaign for PT. Bumi Wisata Indonesia</td> 
+                                    <td>Instagram, CapCut</td> 
+                                    <td>Freelance</td> 
+                                    <td><a href="https://www.instagram.com/kepulauanseribujakarta?igsh=MWppM3Fvcjg1YWZhaA%3D%3D&utm_source=qr" target="_blank" class="archive-link">Instagram <i class='bx bxl-instagram'></i></a></td> 
+                                </tr> 
+                                <tr> 
+                                    <td>2025</td> 
+                                    <td>Promotional Video Production by [Aji Wijayatama]</td> 
+                                    <td>Tiktok, Instagram, Capcut</td> 
+                                    <td>Personal</td> 
+                                    <td><a href="https://drive.google.com/drive/folders/1vA4RSTAD8FQPltnY8KqMD9oB0PUlzk9h?usp=sharing" target="_blank" class="archive-link"> Gdrive <i class='bx bx-link-external'></i> </a></td> 
+                                </tr> 
+                                <tr> 
+                                    <td>2025</td> 
+                                    <td>Ecommerce Jati Furniture</td> 
+                                    <td>HTML, CSS, JS, Bootstrap, Laravel, MySQL</td> 
+                                    <td>Academic</td> 
+                                    <td><a href="https://github.com/ajiwijayatamaa/PortofolioProjects/tree/main/ecommerce-furniture-jati" target="_blank" class="archive-link">GitHub <i class='bx bxl-github'></i></a></td> 
+                                </tr> 
+                                <tr> 
+                                    <td>2025</td> 
+                                    <td>Portofolio Projects</td> 
+                                    <td>HTML, CSS, JS, Bootstrap, Laravel, MySQL</td> 
+                                    <td>Personal</td> 
+                                    <td><a href="https://github.com/ajiwijayatamaa/PortofolioProjects.git" target="_blank" class="archive-link">GitHub <i class='bx bxl-github'></i></a></td> 
+                                </tr> 
+                                <tr> 
+                                    <td>2025</td> 
+                                    <td>Personal Portfolio Website</td> 
+                                    <td>HTML, CSS, JS, Bootstrap</td> 
+                                    <td>Personal</td> 
+                                    <td><a href="https://github.com/ajiwijayatamaa/ajiwijayatamaa.github.io" target="_blank" class="archive-link">GitHub <i class='bx bxl-github'></i></a></td> 
+                                </tr> 
+                            </tbody> 
+                        </table> 
+                    </div> 
+                </div> 
 
-                <div class="col-lg-4">
-                    <div class="text-center text-lg-start">
-                        <h2 class="section-title">Certifications</h2>
-                    </div>
-                    <div class="certification-list mt-lg-2">
-                        <div class="certification-card" data-aos="fade-left">
-                            <div class="certification-icon"><i class='bx bxs-file-pdf'></i></div>
-                            <div class="certification-info">
-                                <h5>Digital Marketing</h5>
-                            </div>
-                            <a href="https://drive.google.com/file/d/1DDPaMPbrXiJTR8rYkluM-I8vvRu-SCtl/view?usp=sharing" target="_blank" class="certification-link" aria-label="View Certificate"><i class='bx bx-link-external'></i></a>
-                        </div>
-                        <div class="certification-card" data-aos="fade-left" data-aos-delay="200">
-                            <div class="certification-icon"><i class='bx bxl-html5'></i></div>
-                            <div class="certification-info">
-                                <h5>Dasar Pemrograman Web</h5>
-                            </div>
-                            <a href="https://drive.google.com/drive/folders/1RWIFcKCcRd7czM51vZQqVeBmTpcTlfwn?usp=sharing" target="_blank" class="certification-link" aria-label="View Certificate"><i class='bx bx-link-external'></i></a>
-                        </div>
-                    </div>
-                </div>
+                <div class="col-lg-4"> 
+                    <div class="text-center text-lg-start"> 
+                        <h2 class="section-title">Certifications</h2> 
+                    </div> 
+                    <div class="certification-list mt-lg-2"> 
+                        <div class="certification-card" data-aos="fade-left"> 
+                            <div class="certification-icon"><i class='bx bxs-file-pdf'></i></div> 
+                            <div class="certification-info"> 
+                                <h5>Digital Marketing</h5> 
+                            </div> 
+                            <a href="https://drive.google.com/file/d/1DDPaMPbrXiJTR8rYkluM-I8vvRu-SCtl/view?usp=sharing" target="_blank" class="certification-link" aria-label="View Certificate"><i class='bx bx-link-external'></i></a> 
+                        </div> 
+                        <div class="certification-card" data-aos="fade-left" data-aos-delay="200"> 
+                            <div class="certification-icon"><i class='bx bxl-html5'></i></div> 
+                            <div class="certification-info"> 
+                                <h5>Dasar Pemrograman Web</h5> 
+                            </div> 
+                            <a href="https://drive.google.com/drive/folders/1RWIFcKCcRd7czM51vZQqVeBmTpcTlfwn?usp=sharing" target="_blank" class="certification-link" aria-label="View Certificate"><i class='bx bx-link-external'></i></a> 
+                        </div> 
+                    </div> 
+                </div> 
 
-            </div>
-        </section>
-
+            </div> 
+        </section> 
         <section id="contact" class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -679,77 +673,6 @@
                         <div class="carousel-inner"></div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#lightboxCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
                         <button class="carousel-control-next" type="button" data-bs-target="#lightboxCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- === [NEW] Project Archive Modal === -->
-    <div class="modal fade" id="archiveModal" tabindex="-1" aria-labelledby="archiveModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title fs-5" id="archiveModalLabel">Project Archive</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Year</th>
-                                    <th>Project</th>
-                                    <th>Built With</th>
-                                    <th>Type</th>
-                                    <th>Link</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2023 - Present</td>
-                                    <td>Digital Marketing Campaign for Indonesia Furniture</td>
-                                    <td>Instagtam, CapCut</td>
-                                    <td>Family Business</td>
-                                    <td><a href="https://www.instagram.com/furniturejati.ind?igsh=dnR0bXhxM3o2ZWJl&utm_source=qr" target="_blank" class="archive-link">Instagram <i class='bx bxl-instagram'></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>2023 - 2025</td>
-                                    <td>Digital Marketing Campaign for PT. Bumi Wisata Indonesia</td>
-                                    <td>Instagtam, CapCut</td>
-                                    <td>Freelance</td>
-                                    <td><a href="https://www.instagram.com/kepulauanseribujakarta?igsh=MWppM3Fvcjg1YWZhaA%3D%3D&utm_source=qr" target="_blank" class="archive-link">Instagram <i class='bx bxl-instagram'></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>2025</td>
-                                    <td>Promotional Video Production by [Aji Wijayatama]</td>
-                                    <td>Tiktok, Instagram, Capcut</td>
-                                    <td>Personal</td>
-                                    <td><a href="https://drive.google.com/drive/folders/1vA4RSTAD8FQPltnY8KqMD9oB0PUlzk9h?usp=sharing" target="_blank" class="archive-link"> Gdrive <i class='bx bx-link-external'></i> </a>
-                                </tr>
-                                <tr>
-                                    <td>2025</td>
-                                    <td>Ecommerce Jati Furniture</td>
-                                    <td>HTML, CSS, JS, Bootstrap, Laravel, MySQL</td>
-                                    <td>Academic</td>
-                                    <td><a href="https://github.com/ajiwijayatamaa/PortofolioProjects/tree/main/ecommerce-furniture-jati" target="_blank" class="archive-link">GitHub <i class='bx bxl-github'></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>2025</td>
-                                    <td>Portofolio Projects</td>
-                                    <td>HTML, CSS, JS, Bootstrap, Laravel, MySQL</td>
-                                    <td>Personal</td>
-                                    <td><a href="https://github.com/ajiwijayatamaa/PortofolioProjects.git" target="_blank" class="archive-link">GitHub <i class='bx bxl-github'></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>2025</td>
-                                    <td>Personal Portfolio Website</td>
-                                    <td>HTML, CSS, JS, Bootstrap</td>
-                                    <td>Personal</td>
-                                    <td><a href="https://github.com/ajiwijayatamaa/ajiwijayatamaa.github.io" target="_blank" class="archive-link">GitHub <i class='bx bxl-github'></i></a></td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
